@@ -1,6 +1,7 @@
 const playBoard = document.querySelector(".play-board");
-const scoreElement = document.querySelector(".score")
-const highScoreElement = document.querySelector(".high-score")
+const scoreElement = document.querySelector(".score");
+const highScoreElement = document.querySelector(".high-score");
+let controls = document.querySelectorAll('.control'); 
 
 let gameOver = false;
 let foodX, foodY;
@@ -44,6 +45,10 @@ const changeDirection = (e) => {
         velocityY = 0;
     } 
 }
+
+Array.from(controls).forEach(control => {
+    key.addEventListener("click", () => changeDirection({ key: key.dataset.key }));
+});
 
 const initGame = () => {
     if(gameOver) return handleGameOver();
